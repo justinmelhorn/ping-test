@@ -1,6 +1,6 @@
 ---
 - name: Remove from /etc/hosts file for demo
-  hosts: "{{ group }}"
+  hosts: all
   become: true  
   tasks:
     - name: Add host information to /etc/hosts
@@ -9,3 +9,4 @@
         regexp: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{ item }}"
         state: absent
       loop: "{{ groups['all'] }}"
+      when: inventory_hostname is host
