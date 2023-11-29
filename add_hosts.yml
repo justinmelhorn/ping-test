@@ -3,6 +3,10 @@
   hosts: all
   become: true  
   tasks:
+    - name: debug
+      debug:
+        msg: "{{ inventory_hostname }}-failed"
+        
     - name: Add host information to /etc/hosts
       lineinfile:
         path: /etc/hosts
