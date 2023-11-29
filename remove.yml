@@ -9,4 +9,4 @@
         regexp: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{ item }}"
         state: absent
       loop: "{{ groups['all'] }}"
-      when: inventory_hostname is host
+      when: inventory_hostname is {{ host }}
