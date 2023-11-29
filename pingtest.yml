@@ -10,7 +10,17 @@
       register: router_ping
       changed_when: false
       with_items: "{{ groups[group] }}"
-    
+      ignore_erros: yes
+
+    - name: set stats
+      set_stats:
+        hosts: "{{ item.item }}"
+        per_host: yes
+      when: item.failed
+      loop: "{{ router_ping.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+        
     - name: Show failures
       debug:
         msg: "{{ inventory_hostname }} can't ping {{ item.item }}"
