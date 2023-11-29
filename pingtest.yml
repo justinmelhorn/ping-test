@@ -29,3 +29,4 @@
       loop: "{{ router_ping.results }}"
       loop_control:
         label: "{{ item.item }}"
+      failed_when: item.failed
