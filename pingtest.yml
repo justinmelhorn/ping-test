@@ -10,7 +10,7 @@
       register: router_ping
       changed_when: false
       with_items: "{{ groups[group] }}"
-      ignore_erros: yes
+      ignore_errors: yes
 
     - name: set stats
       set_stats:
