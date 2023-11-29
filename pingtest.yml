@@ -15,7 +15,7 @@
     - name: set stats
       set_stats:
         data:
-          broken: "{{ item }}"
+          broken: "{{ item.item }}"
       when: item.failed
       loop: "{{ router_ping.results }}"
       loop_control:
