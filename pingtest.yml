@@ -15,7 +15,7 @@
     - name: set stats
       set_stats:
         data:
-          "{{ inventory_hostname }}": "{{ item }}"
+          "{{ inventory_hostname + 'failed' }}": "{{ item }}"
       when: item.failed
       loop: "{{ router_ping.results }}"
       loop_control:
