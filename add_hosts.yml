@@ -5,7 +5,7 @@
   tasks:
     - name: debug
       debug:
-        msg: "{{ inventory_hostname }}-failed"
+        var: "{{ inventory_hostname }}-failed"
         
     - name: Add host information to /etc/hosts
       lineinfile:
