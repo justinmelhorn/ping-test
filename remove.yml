@@ -1,6 +1,6 @@
 ---
 - name: Remove from /etc/hosts file for demo
-  hosts: all
+  hosts: "{{ group }}"
   become: true  
   tasks:
     - name: Add host information to /etc/hosts
