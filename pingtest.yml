@@ -16,7 +16,6 @@
       set_stats:
         data:
           failed_hosts: "{{ item.item }}"
-        per_host: yes
       when: item.failed
       loop: "{{ router_ping.results }}"
       loop_control:
