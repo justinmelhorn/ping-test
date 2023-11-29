@@ -1,15 +1,11 @@
 ---
 - name: Update /etc/hosts file
   hosts: all
-  become: true
+  become: true  
   tasks:
-    - name: Display and register host information
-      debug:
-        var: hostvars[inventory_hostname]['ansible_default_ipv4']['address']
-      register: ip_result
-
     - name: Add host information to /etc/hosts
       lineinfile:
         path: /etc/hosts
-        line: "{{ hostvars[item.key]['ansible_default_ipv4']['address'] }} {{ item.key }}"
-      with_dict: "{{ hostvars | reject('match', inventory_hostname) | default({}) }}"
+        line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{ item }}"
+      loop: "{{ groups['all'] }}"
+      
