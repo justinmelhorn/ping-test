@@ -12,4 +12,4 @@
         path: /etc/hosts
         line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} {{ item }}"
       loop: "{{ groups['all'] }}"
-      when: item in (inventory_hostname  + '-failed')
+      when: item in broken
