@@ -1,8 +1,12 @@
-- name: "{{ inventory_hostname }}"
-  command: ping -c 1 "{{ item }}"
-  failed_when:
-    - router_ping.rc != 0
-  changed_when: false
-  register: router_ping
-  ignore_errors: true
-  loop: "{{ groups[group] }}"
+- name: Who can ping "{{ item }}"
+  block:
+    - name: Who can ping "{{ item }}"
+      command: ping -c 1 "{{ item }}"
+      failed_when:
+        - router_ping.rc != 0
+      changed_when: false
+      register: router_ping
+      ignore_errors: true
+    rescue:
+      - debug:
+          msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
