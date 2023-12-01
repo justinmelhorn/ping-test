@@ -1,5 +1,4 @@
 - name: Who can ping "{{ item }}"
-  hosts: "{{ group }}"
   any_errors_fatal: false
   block:
     - name: Who can ping "{{ item }}"
