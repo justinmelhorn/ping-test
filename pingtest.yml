@@ -11,6 +11,7 @@
       changed_when: false
       with_items: "{{ groups[group] }}"
       ignore_errors: yes
+      no_log: true
 
     - name: set stats
       set_stats:
