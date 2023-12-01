@@ -9,7 +9,8 @@
       register: router_ping
       no_log: true
   rescue:
-    - name: one or more hosts failed
-      fail:
+    - set_fact:
+        failure_message: "{{ failure_message | default([]) + [inventory_hostname + ' cannot ping ' + item] }}"
+    - fail:
         msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
       ignore_errors: true
