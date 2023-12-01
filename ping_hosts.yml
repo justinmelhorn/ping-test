@@ -1,7 +1,8 @@
-- name: Who can ping {{ item }}
+- name: "{{ inventory_hostname }}"
   command: ping -c 1 "{{ item }}"
   failed_when:
     - router_ping.rc != 0
   changed_when: false
   register: router_ping
   ignore_errors: true
+  loop: "{{ groups[group] }}"
