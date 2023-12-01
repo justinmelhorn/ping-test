@@ -10,8 +10,6 @@
       register: router_ping
       changed_when: false
       with_items: "{{ groups[group] }}"
-      loop_control:
-        label: "failed"
 
     #- name: set stats
     #  set_stats:
