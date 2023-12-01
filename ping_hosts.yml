@@ -8,4 +8,4 @@
       register: router_ping
   rescue:
     - debug:
-      msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
+        msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
