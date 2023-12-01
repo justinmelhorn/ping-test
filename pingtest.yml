@@ -2,10 +2,10 @@
 - name: Check connectivity between nosts in the "{{ group }}" DNS
   hosts: "{{ group }}"
   gather_facts: false
+  any_errors_fatal: false
   tasks:
     - include_tasks: ping_hosts.yml
       loop: "{{ groups[group] }}"
-      any_errors_fatal: false
 
 
     #- name: set stats
