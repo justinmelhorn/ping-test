@@ -6,7 +6,10 @@
 #  register: router_ping
 #  ignore_errors: true
 
-- name: debug
+- name: hostname
   debug:
-    var: "{{ inventory_hostname }}"
-    var: "{{ item }}"
+    var: inventory_hostname
+    
+- name: item
+  debug:
+    var: item
