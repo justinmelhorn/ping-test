@@ -9,7 +9,7 @@
         - router_ping.rc != 0
       register: router_ping
       changed_when: false
-      with_items: "{{ groups[group] }}"
+      loop: "{{ groups[group] }}"
 
     #- name: set stats
     #  set_stats:
