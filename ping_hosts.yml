@@ -9,3 +9,4 @@
   rescue:
     - fail:
         msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
+      ignore_errors: true
