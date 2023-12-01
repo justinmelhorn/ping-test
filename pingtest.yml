@@ -7,7 +7,7 @@
       loop: "{{ groups[group] }}"
     - name: Fail if there were any failures
       fail:
-        msg: "Play failed due to the following ping failures:\n{{ failure_message | join('\n') }}"
+        msg: "Play failed due to the following ping failures:\n{{ failure_message | to_nice_json }}"
       when: failure_message is defined 
 
     #- name: set stats
