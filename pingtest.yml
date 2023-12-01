@@ -4,7 +4,7 @@
   gather_facts: false
   loop: "{{ groups[group] }}"
   tasks:
-    - name: Register ping result from "{{ item }}"
+    - name: Register ping result from {{ item }}
       command: ping -c 1 "{{ item }}"
       failed_when:
         - router_ping.rc != 0
