@@ -10,24 +10,23 @@
       register: router_ping
       changed_when: false
       with_items: "{{ groups[group] }}"
-      ignore_errors: yes
       loop_control:
         label: "failed"
 
-    - name: set stats
-      set_stats:
-        data:
-          broken: "{{ item.item }}"
-      when: item.failed
-      loop: "{{ router_ping.results }}"
-      loop_control:
-        label: "{{ item.item }}"
+    #- name: set stats
+    #  set_stats:
+    #    data:
+   #       broken: "{{ item.item }}"
+    #  when: item.failed
+    #  loop: "{{ router_ping.results }}"
+    #  loop_control:
+    #    label: "{{ item.item }}"
         
-    - name: Show failures
-      debug:
-        msg: "{{ inventory_hostname }} can't ping {{ item.item }}"
-      when: item.failed
-      loop: "{{ router_ping.results }}"
-      loop_control:
-        label: "{{ item.item }}"
-      failed_when: item.failed
+    #- name: Show failures
+   #   debug:
+    #    msg: "{{ inventory_hostname }} can't ping {{ item.item }}"
+   #   when: item.failed
+   #   loop: "{{ router_ping.results }}"
+  #    loop_control:
+  #      label: "{{ item.item }}"
+  #    failed_when: item.failed
