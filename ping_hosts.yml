@@ -1,15 +1,7 @@
-#- name: Register ping result from {{ inventory_hostname }}
-#  command: ping -c 1 "{{ item }}"
-#  failed_when:
-#    - router_ping.rc != 0
-#  changed_when: false
-#  register: router_ping
-#  ignore_errors: true
-
-- name: hostname
-  debug:
-    var: inventory_hostname
-    
-- name: item
-  debug:
-    var: item
+- name: Who can ping {{ item }}
+  command: ping -c 1 "{{ item }}"
+  failed_when:
+    - router_ping.rc != 0
+  changed_when: false
+  register: router_ping
+  ignore_errors: true
