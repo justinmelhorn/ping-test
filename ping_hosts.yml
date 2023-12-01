@@ -1,4 +1,5 @@
 - name: Who can ping "{{ item }}"
+  any_errors_fatal: false
   block:
     - name: Who can ping "{{ item }}"
       command: ping -c 1 "{{ item }}"
@@ -10,4 +11,3 @@
   rescue:
     - fail:
         msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
-      ignore_errors: true
