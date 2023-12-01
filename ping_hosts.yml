@@ -7,5 +7,5 @@
       changed_when: false
       register: router_ping
   rescue:
-    - debug:
+    - fail:
         msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
