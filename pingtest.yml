@@ -5,7 +5,10 @@
   tasks:
     - include_tasks: ping_hosts.yml
       loop: "{{ groups[group] }}"
-
+    - name: Fail if there were any failures
+      fail:
+        msg: "Play failed due to the following ping failures:\n{{ failure_message | join('\n') }}"
+      when: failure_message is defined 
 
     #- name: set stats
     #  set_stats:
