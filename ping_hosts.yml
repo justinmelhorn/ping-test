@@ -3,3 +3,4 @@
   failed_when:
     - router_ping.rc != 0
   changed_when: false
+  ignore_errors: true
