@@ -2,14 +2,15 @@
 - name: Check connectivity between nosts in the "{{ group }}" DNS
   hosts: "{{ group }}"
   gather_facts: false
+  loop: "{{ groups[group] }}"
   tasks:
-    - name: Register ping result
+    - name: Register ping result from "{{ item }}"
       command: ping -c 1 "{{ item }}"
       failed_when:
         - router_ping.rc != 0
       register: router_ping
       changed_when: false
-      loop: "{{ groups[group] }}"
+      
 
     #- name: set stats
     #  set_stats:
