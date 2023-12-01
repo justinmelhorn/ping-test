@@ -6,6 +6,7 @@
         - router_ping.rc != 0
       changed_when: false
       register: router_ping
+      no_log: true
   rescue:
     - fail:
         msg: "{{ inventory_hostname }} cannot ping {{ item }}" 
