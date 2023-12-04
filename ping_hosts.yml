@@ -1,7 +1,7 @@
-- name: Who can ping "{{ item }}"
+- name: "{{ item }}"
   any_errors_fatal: false
   block:
-    - name: "{{ item }}"
+    - name: Who can ping "{{ item }}"
       command: ping -c 1 "{{ item }}"
       failed_when:
         - router_ping.rc != 0
